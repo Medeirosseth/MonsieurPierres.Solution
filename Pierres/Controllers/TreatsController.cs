@@ -27,5 +27,24 @@ namespace Pierres.Controllers
       {
         return ViewModels(_db.Treats.OrderBy(treat => treat.Rating).ToList());
       }
+
+      public ActionResult Create()
+      {
+        ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName");
+        return ViewModels();
+      }
+
+      [HttpPost]
+      public ActionResult Create(Treat treat, int FlavorId)
+      {
+        _db.Treats.Add(treat);
+        _db.SaveChanges();
+        if (FlavorId != 0)
+        {
+          _db.FlavorTreat.Add(new FlavorTreat() {FlavorId = FlavorId, TreatId = treat.TreatId});
+        }
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 }

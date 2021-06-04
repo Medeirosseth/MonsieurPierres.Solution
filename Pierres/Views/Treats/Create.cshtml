@@ -1,0 +1,11 @@
+@model Pierres.Models.Treats
+
+<h4>Add a Tasty Treat </h4>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.TreatName)
+  @Html.TextBoxFor(model => model.TreatName)
+  <input type="submit" value="Add new Treat" />
+}
+
+<p>@Html.ActionLink("TREATS", "Index")</p>
