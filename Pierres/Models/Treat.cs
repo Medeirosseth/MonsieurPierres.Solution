@@ -21,14 +21,14 @@ namespace Pierres.Models
     public string StarRating()
     {
       string starRating = "";
-      if(Rating > 0)
+      if (Rating > 0)
       {
         for (int i = 1; i <= Rating; i++)
         {
           starRating += "⭐ ";
         }
-        return starRating;
       }
+      return starRating;
     }
 
   }

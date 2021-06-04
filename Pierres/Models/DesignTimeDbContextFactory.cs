@@ -3,11 +3,12 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace RecipeBox.Models
+
+namespace Pierres.Models
 {
-  public class RecipeBoxContextFactory : IDesignTimeDbContextFactory<PierresContext>
+  public class PierresContextFactory : IDesignTimeDbContextFactory<PierresContext>
   {
-    RecipeBoxContext IDesignTimeDbContextFactory<PierresContext>.CreateDbContext(string[] args)
+    PierresContext IDesignTimeDbContextFactory<PierresContext>.CreateDbContext(string[] args)
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
           .SetBasePath(Directory.GetCurrentDirectory())
