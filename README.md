@@ -50,7 +50,7 @@ _This project was designed to practice building basic web applications with C# u
      - `CREATE TABLE {template_category (TemplateCategory INT, SomeProperty VARCHAR (255))};` to create a `{template_category}` table
      - `CREATE TABLE {template_item (TemplateItemId INT, TemplateCategoryId Int)};` to create another new `{template_item}` table
 5. To run the console app:
-   - Navigate to `{Salon.Solution/HairSalon}` in your command line
+   - Navigate to `{MonsieurPierres.Solution/Pierres}` in your command line
    - Run the command `dotnet restore` to restore the dependencies that are listed in `{Template.csproj}`
    - Run the command `dotnet add package Microsoft.EntityFrameworkCore -v 5.0.0`
    - Run the command `dotnet add package Pomelo.EntityFrameworkCore.MySql -v 5.0.0-alpha.2`
