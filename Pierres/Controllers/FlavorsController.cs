@@ -17,7 +17,7 @@ namespace Pierres.Controllers
 
     public ActionResult Index()
     {
-      List<Flavor> model = _db.Flavors.ToList();
+      List<Flavors> model = _db.Flavors.ToList();
       return View(model);
     }
 

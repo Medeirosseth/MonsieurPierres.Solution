@@ -4,7 +4,7 @@ namespace Pierres.Models
 {
   public class Flavors
   {
-    public Flavor()
+    public Flavors()
     {
       this.JoinEntities = new HashSet<FlavorTreat>();
       
