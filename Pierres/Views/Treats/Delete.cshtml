@@ -1,0 +1,10 @@
+@model Pierres.Models.Treat
+
+<h2>Delete this treat!?</h2>
+
+@Html.DisplayNameFor(model => model.TreatName): @Html.DisplayFor(model => model.TreatName)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+@Html.ActionLink("TREATS", "Index")
