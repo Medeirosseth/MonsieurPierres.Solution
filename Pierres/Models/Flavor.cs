@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 
-namespace Pierres.Models{
-  public class Flavor
+namespace Pierres.Models
+{
+  public class Flavors
   {
     public Flavor()
     {
       this.JoinEntities = new HashSet<FlavorTreat>();
+      
     }
 
     public virtual ApplicationUser user { get; set; }

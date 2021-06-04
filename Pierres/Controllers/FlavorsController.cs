@@ -23,11 +23,11 @@ namespace Pierres.Controllers
 
     public ActionResult Create()
     {
-      return ViewModels();
+      return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Flavor flavor)
+    public ActionResult Create(Flavors flavor)
     {
       _db.Flavors.Add(flavor);
       _db.SaveChanges();
@@ -38,7 +38,7 @@ namespace Pierres.Controllers
     {
       var thisFlavor = _db.Flavors
       .Include(flavor => flavor.JoinEntities)
-      .ThenInclude(join => join.Recipe)
+      .ThenInclude(join => join.Treat)
       .FirstOrDefault(flavor => flavor.FlavorId == id);
       return View(thisFlavor);
     }
@@ -46,11 +46,11 @@ namespace Pierres.Controllers
     public ActionResult Edit(int id)
     {
       var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
-      return ViewModels(thisFlavor);
+      return View(thisFlavor);
     }
 
     [HttpPost]
-    public ActionResult Edit(Flavor flavor)
+    public ActionResult Edit(Flavors flavor)
     {
       _db.Entry(flavor).State = EntityState.Modified;
       _db.SaveChanges();

@@ -25,13 +25,13 @@ namespace Pierres.Controllers
 
       public ActionResult Index()
       {
-        return ViewModels(_db.Treats.OrderBy(treat => treat.Rating).ToList());
+        return View(_db.Treats.OrderBy(treat => treat.Rating).ToList());
       }
 
       public ActionResult Create()
       {
         ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName");
-        return ViewModels();
+        return View();
       }
 
       [HttpPost]
@@ -53,30 +53,30 @@ namespace Pierres.Controllers
         .Include(treat => treat.JoinEntities)
         .ThenInclude(join => join.Flavor)
         .FirstOrDefault(treat => treat.TreatId ==id);
-        return ViewModels(thisTreat);
+        return View(thisTreat);
       }
 
       public ActionResult Edit(int id)
       {
         var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
         ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName");
-        return ViewModels(thisTreat);
+        return View(thisTreat);
       }
 
       [HttpPost]
-      public ActionResult Edit(Treat treat, int FlavorsId)
+      public ActionResult Edit(Treat treat, int FlavorId)
       {
         FlavorTreat joinTableEntry = null;
         try
         {
-          joinTableEntry = _db.FlavorTreat.Where(entry => (entry.TreatId == treat.TreatId && entry.FlavorID == FlavorId)).Single();
+          joinTableEntry = _db.FlavorTreat.Where(entry => (entry.TreatId == treat.TreatId && entry.FlavorId == FlavorId)).Single();
         }
         catch (System.Exception)
         {
           Console.WriteLine("Doesnt exist in FlavorTreat entry in table");
         }
 
-        if (FlavorsId != 0 && joinTableEntry == null)
+        if (FlavorId != 0 && joinTableEntry == null)
         {
           _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId});
         }
@@ -87,9 +87,9 @@ namespace Pierres.Controllers
 
       public ActionResult AddFlavor(int id)
       {
-        var thisFlavor = _db.Flavors.FirstOrDefault(treat => treat.TreatId == id);
+        var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
         ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName");
-        return View(thisRecipe);
+        return View(thisFlavor);
       }
 
       [HttpPost]
@@ -106,7 +106,7 @@ namespace Pierres.Controllers
       public ActionResult Delete(int id)
       {
         var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-        return ViewModels(thisTreat);
+        return View(thisTreat);
       }
 
       [HttpPost, ActionName("Delete")]
