@@ -55,5 +55,34 @@ namespace Pierres.Controllers
         .FirstOrDefault(treat => treat.TreatId ==id);
         return ViewModels(thisTreat);
       }
+
+      public ActionResult Edit(int id)
+      {
+        var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+        ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName");
+        return ViewModels(thisTreat);
+      }
+
+      [HttpPost]
+      public ActionResult Edit(Treat treat, int FlavorsId)
+      {
+        FlavorTreat joinTableEntry = null;
+        try
+        {
+          joinTableEntry = _db.FlavorTreat.Where(entry => (entry.TreatId == treat.TreatId && entry.FlavorID == FlavorId)).Single();
+        }
+        catch (System.Exception)
+        {
+          Console.WriteLine("Doesnt exist in FlavorTreat entry in table");
+        }
+
+        if (FlavorsId != 0 && joinTableEntry == null)
+        {
+          _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId});
+        }
+        _db.Entry(treat).State = EntityState.Modified;
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 }
