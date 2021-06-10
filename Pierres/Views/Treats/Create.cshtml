@@ -5,6 +5,9 @@
 {
   @Html.LabelFor(model => model.TreatName)
   @Html.TextBoxFor(model => model.TreatName)
+
+  @Html.LabelFor(model => model.Rating)
+  @Html.EditorFor(model => model.Rating)
   <input type="submit" value="Add new Treat" />
 }
 

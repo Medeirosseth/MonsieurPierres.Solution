@@ -2,21 +2,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pierres.Models;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 using System.Linq;
 
 namespace Pierres.Controllers
 {
+  [Authorize]
   public class FlavorsController : Controller 
   {
     private readonly PierresContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public FlavorsController(PierresContext db)
+    public FlavorsController(UserManager<ApplicationUser> userManager, PierresContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
     public ActionResult Index()
     {
+      var userFlavors = _db.Flavors.ToList();
       return View(_db.Flavors.ToList());
     }
 
