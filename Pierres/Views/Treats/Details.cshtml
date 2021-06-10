@@ -26,8 +26,9 @@ else
 }
 
 <p>
-  @Html.ActionLink("Add Flavor", "AddFlavor", new { id = Model.TreatId })
-  @Html.ActionLink("Back to list", "Index")</p>
-  @Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })   
-  @Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })
+  @Html.ActionLink("Add Flavor", "Flavor", "Create", new { id = Model.TreatId })&nbsp;&nbsp;&nbsp;&nbsp;
+  @Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })&nbsp;&nbsp;&nbsp;&nbsp;
+  @Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId }) &nbsp;&nbsp;&nbsp;&nbsp;
+  @Html.ActionLink("Treats", "Index")&nbsp;&nbsp;&nbsp;&nbsp;
+  @Html.ActionLink("Home", "Index", "Home")
 </p>

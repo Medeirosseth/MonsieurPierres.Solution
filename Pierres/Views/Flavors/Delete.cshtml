@@ -3,9 +3,12 @@
 
 <h4>Delete this Flavor?</h4>
 
-@Html.DisplayNameFor(model => model.FlavorName); @Html.DisplayFor(model => model.FlavorName)
+@Html.DisplayNameFor(model => model.FlavorName): @Html.DisplayFor(model => model.FlavorName)
 @using (Html.BeginForm())
 {
   <input type="submit" value="Delete">
 }
-@Html.ActionLink("Flavors", "Index")
+<p>
+    @Html.ActionLink("Flavors", "Index", "Flavors")&nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("Treats", "Index", "Treats")
+</p>

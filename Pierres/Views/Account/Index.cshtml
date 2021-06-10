@@ -4,7 +4,7 @@
 <hr />
 @if (User.Identity.IsAuthenticated)
 {
-  <p> Welcome @User.Identity.Name !</p>
+  <p> You are now logged in @User.Identity.Name! </p>
   @using (Html.BeginForm("LogOff", "Account"))
   {
     <input type="submit" class="btn btn-default" value="Log out"/>
@@ -18,3 +18,8 @@ else
     @Html.ActionLink("Home", "Index", "Home")
   </p>
 }
+<p>
+  @Html.ActionLink("HOME", "Index", "Home")&nbsp;&nbsp;&nbsp;&nbsp;
+  @Html.ActionLink("FLAVORS", "Index", "Flavors")&nbsp;&nbsp;&nbsp;&nbsp;
+  @Html.ActionLink("TREATS", "Index", "Treats")
+</p>
