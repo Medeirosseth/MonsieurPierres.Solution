@@ -5,7 +5,7 @@ namespace Pierres.Models
 {
   public class PierresContext : IdentityDbContext<ApplicationUser>
   { 
-    public virtual DbSet<Flavors> Flavors { get; set; }
+    public virtual DbSet<Flavor> Flavors { get; set; }
     public DbSet<Treat> Treats { get; set; }
     public DbSet<FlavorTreat> FlavorTreat { get; set; }
 

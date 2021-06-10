@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace Pierres.Models
 {
-  public class Flavors
+  public class Flavor
   {
-    public Flavors()
+    public Flavor()
     {
       this.JoinEntities = new HashSet<FlavorTreat>();
       

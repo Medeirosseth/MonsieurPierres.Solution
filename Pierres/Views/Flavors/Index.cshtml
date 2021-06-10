@@ -8,7 +8,7 @@
 }
 
 <ul>
-  @foreach (Flavors flavor in Model)
+  @foreach (Flavor flavor in Model)
   {
     <li>@Html.ActionLink($"{flavor.FlavorName}", "Details", new { id = flavor.FlavorId })</li>
   }

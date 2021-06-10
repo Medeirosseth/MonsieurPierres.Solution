@@ -17,8 +17,7 @@ namespace Pierres.Controllers
 
     public ActionResult Index()
     {
-      List<Flavors> model = _db.Flavors.ToList();
-      return View(model);
+      return View(_db.Flavors.ToList());
     }
 
     public ActionResult Create()
@@ -27,7 +26,7 @@ namespace Pierres.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Flavors flavor)
+    public ActionResult Create(Flavor flavor)
     {
       _db.Flavors.Add(flavor);
       _db.SaveChanges();
@@ -50,7 +49,7 @@ namespace Pierres.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit(Flavors flavor)
+    public ActionResult Edit(Flavor flavor)
     {
       _db.Entry(flavor).State = EntityState.Modified;
       _db.SaveChanges();
